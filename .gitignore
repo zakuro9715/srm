@@ -1,0 +1,5 @@
+plugins
+*.bak*
+a.out
+*.html
+*.sample
