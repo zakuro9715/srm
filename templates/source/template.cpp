@@ -11,11 +11,11 @@ ${<end}
 class ${ClassName}
 {
 public:
-  ${Method.ReturnType} ${Method.Name}(${foreach Method.Params p, }${p.Type} ${p.Name}${end})
+  ${Method.ReturnType} ${Method.Name}(${Method.Params})
   {
     return ${Method.ReturnType;zeroval};
   }
-}
+};
 
 ${CutBegin}
 ${<TestCode}
