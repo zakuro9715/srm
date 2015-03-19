@@ -5,12 +5,11 @@ using namespace std;
 typedef long long ll;
 
 ${<if Problem.Description.Modulo}
-  static const int MOD = ${Problem.Description.Modulo};
+static const int MOD = ${Problem.Description.Modulo};
 ${<end}
 
-class ${ClassName}
+struct ${ClassName}
 {
-public:
   ${Method.ReturnType} ${Method.Name}(${Method.Params})
   {
     return ${Method.ReturnType;zeroval};
