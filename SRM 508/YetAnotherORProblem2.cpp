@@ -1,51 +1,38 @@
 #include<bits/stdc++.h>
 #define INF (1 << 30)
-#define NN 1000001
+#define NR (1 << 16)
 using namespace std;
 typedef long long ll;
 
-struct DivideAndShift
+static const int MOD = 1000000009;
+
+struct YetAnotherORProblem2
 {
-  vector<int> p;
-  int insu[NN];
-  bool b[NN];
-  int getLeast(int N, int M)
+  int dp[11][NR];
+  int countSequences(int N, int R)
   {
-    M--;
-    for(int i = 2; i < NN; i++)
-    {
-      if(b[i])
-        continue;
-      p.push_back(i);
-      for(int j = i + i; j < NN; j += i)
-        b[j] = true;
-    }
-    for(int i = 0; i < NN; i++)
-    {
-      int x = i;
-      for(int j = 0; j < p.size() && p[j] * p[j] <= i; j++)
-      {
-        while(!(x % p[j]))
-        {
-          insu[i]++;
-          x /= p[j];
-        }
-      }
-      if(x > 1 && !b[x])
-        insu[i]++;
-    }
-    int ans = M;
+    dp[0][0] = 1;
     for(int i = 1; i <= N; i++)
     {
-      if(!(N % i))
-        ans = min(ans, min(M % (N / i), (N / i) - M % (N / i)) + insu[i]); 
+      for(int j = 0; j < NR; j++)
+      {
+        for(int k = j; k >= 0; k--)
+        {
+          k &= j;
+          if(k <= R)
+            dp[i][j] = (dp[i][j] + dp[i - 1][j - k]) % MOD;
+        }
+      }
     }
-    return ans;
+    int a = 0;
+    for(int i = 0; i < NR; i++)
+      a = (a + dp[N][i]) % MOD;
+    return a;
   }
 };
 
 // CUT begin
-ifstream data("DivideAndShift.sample");
+ifstream data("YetAnotherORProblem2.sample");
 
 string next_line() {
     string s;
@@ -73,10 +60,10 @@ string to_string(string t) {
     return "\"" + t + "\"";
 }
 
-bool do_test(int N, int M, int __expected) {
+bool do_test(int N, int R, int __expected) {
     time_t startClock = clock();
-    DivideAndShift *instance = new DivideAndShift();
-    int __result = instance->getLeast(N, M);
+    YetAnotherORProblem2 *instance = new YetAnotherORProblem2();
+    int __result = instance->countSequences(N, R);
     double elapsed = (double)(clock() - startClock) / CLOCKS_PER_SEC;
     delete instance;
 
@@ -99,8 +86,8 @@ int run_test(bool mainProcess, const set<int> &case_set, const string command) {
             break;
         int N;
         from_stream(N);
-        int M;
-        from_stream(M);
+        int R;
+        from_stream(R);
         next_line();
         int __answer;
         from_stream(__answer);
@@ -110,16 +97,16 @@ int run_test(bool mainProcess, const set<int> &case_set, const string command) {
             continue;
 
         cout << "  Testcase #" << cases - 1 << " ... ";
-        if ( do_test(N, M, __answer)) {
+        if ( do_test(N, R, __answer)) {
             passed++;
         }
     }
     if (mainProcess) {
         cout << endl << "Passed : " << passed << "/" << cases << " cases" << endl;
-        int T = time(NULL) - 1427280213;
+        int T = time(NULL) - 1427360132;
         double PT = T / 60.0, TT = 75.0;
         cout << "Time   : " << T / 60 << " minutes " << T % 60 << " secs" << endl;
-        cout << "Score  : " << 500 * (0.3 + (0.7 * TT * TT) / (10.0 * PT * PT + TT * TT)) << " points" << endl;
+        cout << "Score  : " << 1000 * (0.3 + (0.7 * TT * TT) / (10.0 * PT * PT + TT * TT)) << " points" << endl;
     }
     return 0;
 }
@@ -137,7 +124,7 @@ int main(int argc, char *argv[]) {
         }
     }
     if (mainProcess) {
-        cout << "DivideAndShift (500 Points)" << endl << endl;
+        cout << "YetAnotherORProblem2 (1000 Points)" << endl << endl;
     }
     return run_test(mainProcess, cases, argv[0]);
 }

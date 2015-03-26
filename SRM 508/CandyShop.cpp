@@ -6,20 +6,24 @@ typedef long long ll;
 
 struct CandyShop
 {
+  bool b[500][500];
   int countProbablePlaces(vector<int> X, vector<int> Y, vector<int> R)
   {
-    int a = 0;
-    for(int y = -100; y <= 100; y++)
+    fill((bool*)b, (bool*)b + 500 * 500, true);
+    for(int y = 0; y < 500; y++)
     {
-      for(int x = -100; x <= 100; x++)
+      for(int x = 0; x < 500; x++)
       {
-        bool f = true;
         for(int i = 0; i < X.size(); i++)
-          f &= abs(x - X[i]) + abs(y - Y[i]) <= R[i];
-        if(f)
-          a++;
+          if(abs(x - 250 - X[i]) + abs(y - 250 - Y[i]) > R[i])
+            b[x][y] = false;
       }
     }
+    int a = 0;
+    for(int y = 0; y < 500; y++)
+      for(int x = 0; x < 500; x++)
+        if(b[y][x])
+          a++;
     return a;
   }
 };
