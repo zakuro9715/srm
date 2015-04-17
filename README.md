@@ -1,0 +1,4 @@
+- [ ] SRM656 Div2
+  - [x] CorruptedMessage
+  - [x] PermutationCountsDiv2
+  - [ ] RandomPancakeStackDiv2
