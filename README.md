@@ -1,4 +1,8 @@
 - [ ] SRM656 Div2
-  - [x] CorruptedMessage
-  - [x] PermutationCountsDiv2
-  - [ ] RandomPancakeStackDiv2
+    - [x] CorruptedMessage
+    - [x] PermutationCountsDiv2
+    - [ ] RandomPancakeStackDiv2
+- [ ] SRM 657 Div2
+    - [x] EightRocks
+    - [ ] ProblemSetsEasy
+    - [ ] PolynomialReminder
