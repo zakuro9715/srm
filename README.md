@@ -6,3 +6,7 @@
     - [x] EightRocks
     - [ ] ProblemSetsEasy
     - [ ] PolynomialReminder
+- [ ] SRM 660 Div2
+    - [x] Cyclemin
+    - [x] PrivateD2Partty
+    - [ ] Powerit
