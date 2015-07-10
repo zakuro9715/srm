@@ -10,3 +10,7 @@
     - [x] Cyclemin
     - [x] PrivateD2Partty
     - [ ] Powerit
+- [x] SRM 662 Div2
+    - [x] Hexspeak
+    - [x] ExtractTreeEasy
+    - [x] Flee
